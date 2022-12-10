@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load index %}
+
+{% block title %}Add row{% endblock %}
+
+{% block body %}
+    <form method="POST"> {% csrf_token %}
+        <ul>
+            {% for col_name in cols %}
+                <li>{{ col_name }}: <input type="text" required name="{{col_name}}" value="{{ data|index:forloop.counter0 }}"> ({{ types|index:forloop.counter0 }})</li>
+            {% endfor %}
+
+            <li>
+                <button type="submit" class="btn btn-success">Add</button>
+                <a href="./"><button type="button" class="btn btn-primary">Return</button></a>
+            </li>
+        </ul>
+    </form>
+{% endblock %}

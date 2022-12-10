@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load index %}
+
+{% block title %}Col delete{% endblock %}
+
+{% block body %}
+
+    <form method="POST"> {% csrf_token %}
+        <p>Name: {{ col_name }}></p>
+
+        <ul>
+            {% for row in col_data %}
+                <li>{{ row }}</li>
+            {% endfor %}
+        </ul>
+
+        <p>Are you sure?</p>
+        <button type="submit" class="btn btn-danger">delete</button>
+        <a href="../"><button type="button" class="btn btn-primary">Return</button></a>
+    </form>
+
+{% endblock %}

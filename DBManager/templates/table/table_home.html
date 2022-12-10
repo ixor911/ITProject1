@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Table home{% endblock %}
+
+{% block body %}
+
+<div class="album py-5 bg-light">
+    <div class="container table-home-container">
+        {% for table in tables %}
+
+        <div class="col table-home-elem">
+            <a href="{{ table.id }}/">
+                <div class="card shadow-sm">
+                    <div class="table-home-element">
+                        {{ table.name }}
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+

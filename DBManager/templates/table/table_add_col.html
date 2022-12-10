@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Add col{% endblock %}
+
+{% block body %}
+    <form method="POST"> {% csrf_token %}
+        <p>Name: <input type="text" name="name" required></p>
+        <select required name="type">
+            <option value="int">int</option>
+            <option value="float">real</option>
+            <option value="char">char</option>
+            <option value="string" selected>string</option>
+            <option value="money">money</option>
+            <option value="money_intv">money interval</option>
+        </select>
+        <button type="submit" class="btn btn-success">Add</button>
+        <a href="./"><button type="button" class="btn btn-primary">Return</button></a>
+    </form>
+{% endblock %}

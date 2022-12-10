@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load index %}
+
+{% block title %}Table delete{% endblock %}
+
+{% block body %}
+    <form method="POST"> {% csrf_token %}
+        <p>{{ table.name }}</p>
+        cols:
+        <ul>
+            {% for col_name in table.data.keys %}
+                <li>&emsp;{{ col_name }}</li>
+            {% endfor %}
+        </ul>
+        <p>Are you sure you want to delete this table?</p>
+        <button type="submit"  class="btn btn-danger">Delete</button>
+        <a href="./"><button type="button" class="btn btn-primary">Return</button></a>
+    </form>
+{% endblock %}

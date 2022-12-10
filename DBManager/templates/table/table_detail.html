@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load index %}
+
+{% block title %}Table detail{% endblock %}
+
+{% block body %}
+
+<div class="album py-5 bg-light">
+    <div class="container table-home-container">
+        <div class="col">
+            <div class="card shadow-sm">
+
+                <div class="table-detail-element-name">
+                    <ul class="table-detail-header-ul">
+                        <li class="table-detail-header-li">{{ table.name }}</li>
+                        <li class="table-detail-header-li button">
+                            <a href="./add_row"><button type="button" class="btn btn-primary">Add row</button></a>
+                            <a href="./add_col"><button type="button" class="btn btn-primary">Add col</button></a>
+                            <a href="./delete"><button type="button" class="btn btn-danger">Delete table</button></a>
+                            <a href="../"><button type="button" class="btn btn-primary">Return</button></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="table-detail-element-col-ul">
+                    <ul class="table-detail-element-row-ul table-detail-element-row-ul-header">
+                        {% for col_name in table.data.keys %}
+                            <ul class="table-detail-element-row-li">
+                                <li>{{ col_name }}</li>
+                                <li><a href="./edit_col/{{ col_name }}"><button type="button" class="btn btn-light">edit</button></a></li>
+                                <li><a href="./del_col/{{ col_name }}"><button type="button" class="btn btn-light">del</button></a></li>
+                            </ul>
+                        {% endfor %}
+                        <li>
+                            <a><button type="button" class="btn btn-danger">Del</button></a>
+                        </li>
+                    </ul>
+
+                    {% for row in first_col %}
+                        <ul class="table-detail-element-row-ul">
+                            {% for col in table.data.keys %}
+                                <li class="table-detail-element-row-li">
+                                    {{ table_values|index:forloop.counter0|index:forloop.parentloop.counter0 }}
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="./del_row/{{ forloop.counter0 }}"><button type="button" class="btn btn-danger">Del</button></a>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

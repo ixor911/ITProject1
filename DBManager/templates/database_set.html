@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        <input type="file" name="database_file">
+        <button type="submit" class="btn btn-success">set database</button>
+        <a href="./"><button type="button" class="btn btn-primary">Return</button></a>
+    </form>
+
+{% endblock %}
+

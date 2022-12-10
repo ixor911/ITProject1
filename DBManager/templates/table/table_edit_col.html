@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load index %}
+
+{% block title %}Col edit{% endblock %}
+
+{% block body %}
+
+    <form method="POST"> {% csrf_token %}
+        <p>Name: <input type="text" name="name" required value="{{ col_name }}"></p>
+        <button type="submit" class="btn btn-success">Edit</button>
+        <a href="../"><button type="button" class="btn btn-primary">Return</button></a>
+    </form>
+
+{% endblock %}
